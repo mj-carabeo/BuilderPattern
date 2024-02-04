@@ -23,40 +23,32 @@ public class User {
         private String phone;
         private int age;
 
-        public Builder setFirstName(String firstName) {
+        public Builder(String firstName, String lastName, String email) {
             this.firstName = firstName;
-            return this;
-        }
-
-        public Builder setLastName(String lastName) {
             this.lastName = lastName;
-            return this;
-        }
-
-        public Builder setEmail(String email) {
             this.email = email;
-            return this;
         }
 
-        public Builder setAddress(String address) {
+        public Builder address(String address) {
             this.address = address;
             return this;
         }
 
-        public Builder setPhone(String phone) {
+        public Builder phone(String phone) {
             this.phone = phone;
             return this;
         }
 
-        public Builder setAge(int age) {
+        public Builder age(int age) {
             this.age = age;
             return this;
         }
 
         public User build() {
-            if (firstName == null || email == null) {
-                throw new IllegalStateException("Invalid data. First name and email are required.");
+            if (firstName == null || lastName == null || email == null) {
+                throw new IllegalStateException("First name, last name, and email are required.");
             }
+
             return new User(this);
         }
     }
